@@ -1,8 +1,9 @@
 const emojis = ["🤡","😎","🤠","😱","👿","🤖"];
 const cards = [];
 let flipped = 0;
-let matchesFound = 0;
 let emoji = "";
+
+let matchesCounter = 0;
 
 let previousCard;
 let presentCard;
@@ -67,6 +68,13 @@ function checkMatch(presentCardValue, previousCardValue){
         presentCard = null;
         flippedBool = false;
         flipped = 0;
+        matchesCounter++;
+
+        if(matchesCounter >= 6){
+            alert("YOU HAVE WON! RESTART THE GAME!");
+            location.reload();
+        }
+
     } else {
         setTimeout( () => {
             presentCardValue.style.backgroundColor = "#007bff";
@@ -80,6 +88,4 @@ function checkMatch(presentCardValue, previousCardValue){
             presentCard = null;
         }, 1000);
     }
-    
 }
-
